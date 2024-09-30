@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+{% block body %}
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-12 mb-4">
+                <div class="card border-light shadow-sm">
+                    <div class="card-header">
+                        <h2 class="h5 mb-0">Generated Questions and Answers</h2>
+                    </div>
+
+                    <div class="card-body">
+                        <!-- Loop through the results and display each line -->
+                        {% for line in cresults %}
+                            <div class="mb-4">
+                                <p>{{ line | safe }}</p>  <!-- Display each line as it is -->
+                                <hr>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
