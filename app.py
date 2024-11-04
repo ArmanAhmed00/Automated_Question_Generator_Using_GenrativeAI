@@ -1,17 +1,19 @@
-import spacy
 from flask import Flask, request, render_template, flash, redirect, url_for
 from objective import ObjectiveTest  # Custom logic for objective questions
 from subjective import SubjectiveTest  # Custom logic for subjective questions
 import google.generativeai as genai  # Import Gemini API library
 import config  # Import the configuration file for API keys
 import logging
+from openai import OpenAI
+import spacy
+
 
 # Load the SpaCypip install google-generativeai
 #  English model
 nlp = spacy.load("en_core_web_sm")
 
 # Configure Gemini API using your API key
-genai.configure(api_key=config.GEMINI_API_KEY)
+genai.configure(api_key="AIzaSyB682LB5m6kNDKTDhzuyURXE642jl_lqh0")
 
 # Switch to a simpler Gemini model (if available)
 gemini_model = genai.GenerativeModel('gemini-pro')  # Use 'gemini-lite' or 'gemini-pro'
@@ -74,46 +76,50 @@ def test_generate():
                 return redirect(url_for('index'))
 
         # Use existing logic for objective question generation
+        # Use Gemini API for objective question generation
         elif testType == "objective":
             try:
                 chat = gemini_model.start_chat(history=[])
                 logging.debug(f"Sending request to Gemini: Generate {noOfQues} questions based on the text.")
-        
-        # Request AI to generate questions and answers
-                response = chat.send_message(f"Generate {noOfQues} multiple-choice questions and answers based on the following text. /n {inputText}""")
 
-        # Log the raw response to check its structure
+                # Request AI to generate questions and answers
+                response = chat.send_message(
+                    f"Generate {noOfQues} multiple-choice questions and answers based on the following text. "
+                    f"Format each as 'Question: <question_text>', (A) <option1>, (B) <option2>, (C) <option3>, "
+                    f"(D) <option4> as radion button, Answer: <correct_answer>:\n{inputText}"
+                    f"Change Line for each questions."
+                )
+
                 logging.debug(f"Raw response from Gemini: {response.text}")
-                
-                # Split the response text into lines
+
+                # Split and structure the response for display
                 lines = response.text.strip().split("\n")
-                
-                # Store and structure each line in a list for display
                 structured_output = []
                 question_block = []
-                
+
                 for line in lines:
-                    # Detect start of a new question (assuming "Question:" prefix is provided in the response)
+                    # Detect new question based on prefix
                     if line.startswith("Question:"):
                         if question_block:
-                            structured_output.append("\n".join(question_block))  # Store the previous question block
-                            question_block = []  # Reset for the new question
-                        question_block.append(line)  # Add new question to the block
+                            structured_output.append("<br>".join(question_block))  # Store previous block
+                            question_block = []  # Reset block
+                        question_block.append(line)  # Add new question
                     else:
-                        question_block.append(line)  # Add options/answers to the current question block
+                        question_block.append(line)  # Add options/answer
 
                 # Add the last question block
                 if question_block:
-                    structured_output.append("\n".join(question_block))
+                    structured_output.append("<br>".join(question_block))
 
-                # Pass the structured output to the template for display
+                # Render the template with structured output
                 return render_template("objective_type.html", cresults=structured_output)
+
             except Exception as e:
                 logging.error(f"Error with Gemini API: {str(e)}")
                 flash(f"Error with Gemini API: {str(e)}")
                 return redirect(url_for("index"))
 
-        # Use existing logic for subjective question generation using local method
+                # Use existing logic for subjective question generation using local method
         elif testType == "gemini":
             try:
                 response = generate_questions_with_ai(inputText, noOfQues, "subjective")
@@ -123,9 +129,9 @@ def test_generate():
                 flash(f"Error generating subjective questions: {str(e)}")
                 return redirect(url_for('index'))
 
-        else:
-            flash('Error: Invalid test type!')
-            return redirect(url_for('index'))
+            else:
+                flash('Error: Invalid test type!')
+                return redirect(url_for('index'))
 # Function to generate questions based on existing local logic (objective/subjective)
 def generate_questions_with_ai(input_text, num_questions, question_type):
     if question_type == "objective":
@@ -144,4 +150,4 @@ def generate_questions_with_ai(input_text, num_questions, question_type):
         return zip(questions, answers)
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5005, debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=True)

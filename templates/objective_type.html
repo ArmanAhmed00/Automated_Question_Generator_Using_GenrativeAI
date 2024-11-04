@@ -5,17 +5,23 @@
             <div class="col-12 mb-4">
                 <div class="card border-light shadow-sm">
                     <div class="card-header">
-                        <h2 class="h5 mb-0">Generated Questions and Answers</h2>
+                        <h2 class="h5 mb-0">Generated Objective Questions and Answers</h2>
                     </div>
-
                     <div class="card-body">
+                        <!-- Debugging output -->
+                        <p>{{ cresults | safe }}</p>
+                        
                         <!-- Loop through the results and display each line -->
-                        {% for line in cresults %}
-                            <div class="mb-4">
-                                <p>{{ line | safe }}</p>  <!-- Display each line as it is -->
-                                <hr>
-                            </div>
-                        {% endfor %}
+                        {% if cresults %}
+                            {% for line in cresults %}
+                                <div class="mb-4">
+                                    <p>{{ line | safe }}</p>
+                                    <hr>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <p>No questions generated.</p>
+                        {% endif %}
                     </div>
                 </div>
             </div>
