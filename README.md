@@ -46,15 +46,7 @@ pip install -r requirements.txt
 flask run
 ```
 
-### 2. Usage Example Section
-```markdown
-## 🖥️ Usage Example
 
-**Input Screen**:
-
-
-**Sample Output**:
-```
 ## 🧠 How It Works
 
 ```mermaid
@@ -66,7 +58,7 @@ graph TD
     E --> F[Output Formatting]
 ```
 
-### 4. Sample Output Section
+### Sample Output Section
 ```markdown
 ## 📊 Sample Output
 
@@ -83,7 +75,7 @@ graph TD
 }
 ```
 
-### 5. License Section
+### License Section
 ```markdown
 ## 📜 License
 
@@ -110,7 +102,7 @@ graph TD
 + 6. Open pull request
 ```
 
-### 7. Contact Section
+### Contact Section
 ```markdown
 ## 📬 Contact
 
