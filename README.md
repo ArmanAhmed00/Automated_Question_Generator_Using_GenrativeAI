@@ -1,59 +1,112 @@
-<h1>Automated Question Builder</h1>
+# 🤖 Automated Question Builder
 
-<h2>Description</h2>
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Flask](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)
+![Machine Learning](https://img.shields.io/badge/Machine%20Learning-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)
+![MIT License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)
 
-<p>This project is an <strong>AI-powered Automated Question Builder</strong> that generates objective questions and corresponding answers based on input topics or keywords. Built using Python and Flask, it incorporates machine learning models to efficiently create multiple-choice questions.</p>
+An AI-powered system that automatically generates objective questions and answers from input topics.
 
-<h2>Features</h2>
+## ✨ Features
 
-<ul>
-    <li><strong>Objective Question Generation</strong>: Automatically generates objective questions with multiple-choice answers based on input keywords or topics.</li>
-    <li><strong>Answer Generation</strong>: Provides correct answers along with distractor options for each question.</li>
-    <li><strong>Customizable Input</strong>: Users can input any topic or keyword to tailor the question set.</li>
-</ul>
+| Feature | Description |
+|---------|-------------|
+| 🎯 **Smart Question Generation** | Automatically creates multiple-choice questions from any topic |
+| 🔍 **Answer Synthesis** | Generates correct answers with plausible distractors |
+| 🛠️ **Customizable Input** | Works with any subject matter or keywords |
+| 🌐 **Web Interface** | User-friendly Flask web application |
 
-<h2>Project Structure</h2>
+## 🏗️ Project Structure
 
-<ul>
-    <li><code>app.py</code>: Main Flask application that handles user input and API requests.</li>
-    <li><code>objective.py</code>: Contains the logic for generating questions and answers using machine learning techniques.</li>
-    <li><code>requirements.txt</code>: Lists all the Python dependencies required for the project.</li>
-    <li><code>templates/</code>: Contains HTML templates for rendering the web interface.</li>
-</ul>
+```bash
+Automated-Question-Builder/
+├── app.py              # Main Flask application
+├── objective.py        # Question generation logic
+├── requirements.txt    # Dependencies
+└── templates/          # HTML templates
+    ├── index.html
+    └── results.html
+```
+## 🚀 Quick Start
 
-<h2>Installation</h2>
+```
+# Clone repository
+git clone https://github.com/ArmanAhmed00/Automated-Question-Builder.git
+cd Automated-Question-Builder
 
-<ol>
-    <li><strong>Clone the repository</strong>:
-        <pre><code>git clone https://github.com/ArmanAhmed00/Automated-Question-Builder.git
-cd Automated-Question-Builder</code></pre>
-    </li>
-    <li><strong>Create and activate a virtual environment</strong>:
-        <pre><code>python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate</code></pre>
-    </li>
-    <li><strong>Install dependencies</strong>:
-        <pre><code>pip install -r requirements.txt</code></pre>
-    </li>
-    <li><strong>Run the application</strong>:
-        <pre><code>flask run</code></pre>
-    </li>
-    <li>Visit <code>http://127.0.0.1:5000</code> in your browser to view and use the application.</li>
-</ol>
+# Create virtual environment
+python -m venv venv
+source venv/bin/activate  # Linux/Mac
+# venv\Scripts\activate  # Windows
 
-<h2>Usage</h2>
+# Install dependencies
+pip install -r requirements.txt
 
-<p>After starting the application, input a keyword or topic for which you want to generate questions, and the app will return objective questions with multiple-choice answers and distractors.</p>
+# Launch application
+flask run
+```
 
 
-<h2>License</h2>
+## 🧠 How It Works
 
-This project is licensed under the MIT License. See the License file for more details.
+```mermaid
+graph TD
+    A[Input Topic] --> B(NLP Processing)
+    B --> C[Question Generation]
+    C --> D[Answer Synthesis]
+    D --> E[Distractor Creation]
+    E --> F[Output Formatting]
+```
 
-<h2>Contributors</h2>
+### Sample Output Section
+```markdown
+## 📊 Sample Output
 
-- ARMAN AHMED
+```json
+{
+  "topic": "Cryptography",
+  "questions": [
+    {
+      "question": "Which is symmetric encryption?",
+      "options": ["A) RSA", "B) AES (✓)", "C) ECC", "D) DSA"],
+      "explanation": "AES uses same key for encryption/decryption"
+    }
+  ]
+}
+```
 
-</h2>Contact</h2>
+### License Section
+```markdown
+## 📜 License
 
-For any queries or suggestions, feel free to reach out via armanofficial2401@gmail.com or open an issue on GitHub.
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+
+**Permissions**:
+- Commercial use
+- Modification
+- Distribution
+
+**Limitations**:
+- Liability
+- Warranty
+```
+## 🤝 Contributing
+
+```diff
+# Recommended Workflow:
++ 1. Open an issue to discuss changes
++ 2. Fork the repository
++ 3. Create feature branch (git checkout -b feat/xyz)
++ 4. Commit changes (git commit -m 'feat: add xyz')
++ 5. Push to branch (git push origin feat/xyz)
++ 6. Open pull request
+```
+
+## 📬 Contact
+<div align="center">
+
+[![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:armanofficial2401@gmail.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/armanahmed24)
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/ArmanAhmed00)
+
+</div>
