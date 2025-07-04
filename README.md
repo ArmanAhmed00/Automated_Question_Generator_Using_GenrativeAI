@@ -29,7 +29,7 @@ Automated-Question-Builder/
 ```
 ## 🚀 Quick Start
 
-```bash
+```
 # Clone repository
 git clone https://github.com/ArmanAhmed00/Automated-Question-Builder.git
 cd Automated-Question-Builder
@@ -102,10 +102,7 @@ graph TD
 + 6. Open pull request
 ```
 
-### Contact Section
-```markdown
 ## 📬 Contact
-
 <div align="center">
 
 [![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:armanofficial2401@gmail.com)
